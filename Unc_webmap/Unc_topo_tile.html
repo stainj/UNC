@@ -33,7 +33,20 @@
 
       var marker = L.marker([35.899509, -79.043952])
       .bindPopup("Dean Dome")
-      .openPopup();
+      .openPopup(); 
+
+      var domeIcon = L.icon({
+        iconURL: 'http://cdn.onlinewebfonts.com/svg/download_543065.png',
+        iconSize: [50,50],
+        popupAnchor: [0,0],
+      });
+      var customPopup = "https://2.bp.blogspot.com/-oxlumiwWxXw/VoHHxqaIq6I/AAAAAAAAEJU/rz0iP-WoiE8/s1600/Dean%2BDome%2BChapel%2BHill.jpg";
+
+      // L.geoJSON(uncdome, {
+      // pointToLayer: function (feature, latlng) {
+      // return L.marker(latlng, {icon: domeIcon});}})
+      // .bindPopup(customPopup)
+      // .addTo(map);
 
       var OTM = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
 	    maxZoom: 17,
@@ -52,25 +65,14 @@
         "Unc photo":topoPhoto
       }
 
-      var vectors = {
-       "Dean Dome":marker
+      var vector = {
+       "Dean Dome":marker,
       }
 
-      L.control.layers(tiles, vectors).addTo(map);
+      L.control.layers(tiles, vector).addTo(map);
 
-      var domeIcon = L.icon({
-        iconURL: 'http://cdn.onlinewebfonts.com/svg/download_543065.png',
-        iconSize: [50,50],
-        popupAnchor: [0,0],
-      });
-      var customPopup = "https://tse1.mm.bing.net/th?id=OIP.r7BBm_7GR4aXtMpF_fcHxgAAAA&pid=Api";
 
-      L.geoJSON(uncdome, {
-      pointToLayer: function (feature, latlng) {
-      return L.marker(latlng, {icon: domeIcon});}})
-      .bindPopup(customPopup)
-      .addTo(map);
-
+     
 
   </script>
 </body>
