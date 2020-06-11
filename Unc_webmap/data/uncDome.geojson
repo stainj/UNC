@@ -1,8 +1,0 @@
-var uncdome = {
-"type": "FeatureCollection",
-"name": "uncdome",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2264" } },
-"features": [
-{ "type": "Feature", "properties": { "id": 1, "name": "Dean Dome", "coordinate": "35.899509, -79.043952" }, "geometry": { "type": "Point", "coordinates": [ -79.043952, 35.899509  ] } }
-]
-}
