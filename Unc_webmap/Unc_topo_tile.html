@@ -31,16 +31,38 @@
   <script>
       var map = L.map('map').setView([35.905068913596125, -79.04997240674135], 14.0);
 
+  var hospitalpopup = "This is where I got treated for neck pain <br/><img src=' https://www.3cisd.com/wp-content/uploads/2016/04/UNCsom_logo_blue_1200px.png'width='100px'/>";
+  var stadiumpopup = "This is where I watched my first UNC football game <br/><img src='https://s3media.247sports.com/Uploads/Assets/497/577/26_4577497.png'width='200px'/>"; 
+
+      var latlngs = [[35.900322465425269,-79.041246584187775],[35.900336248096373,-79.0432968454476]];
+      var polyline = L.polyline(latlngs, {color: 'red'})
+        .bindPopup("This is the street I lived on when I lived in the apartments on campus");
+      
+      var latlngs2 = [[35.911077498542753,-79.048610965042599],[35.91144179114,-79.04775781280695],[35.911262063535119,-79.04761391861777],[35.911313399483276,-79.047503691159406],[35.911048795715459,-79.047296534542568],[35.910633806563723,-79.048333031555558],[35.911077498542753,-79.048610965042599]];
+      var polygon = L.polygon(latlngs2, {color: 'blue'})
+        .bindPopup("This is my favorite library to study in");
+
       var marker = L.marker([35.899509, -79.043952])
       .bindPopup("Dean Dome")
+      .openPopup();
+
+      var stadium = L.marker([35.907006414907208,-79.047802315326066])
+      .bindPopup(stadiumpopup)
       .openPopup(); 
+     
+
+      var hospital = L.marker([35.905532009097364,-79.050436141255304])
+      .bindPopup(hospitalpopup)
+      .openPopup(); 
+      
+    
 
       var domeIcon = L.icon({
         iconUrl: 'http://cdn.onlinewebfonts.com/svg/download_543065.png',
-        iconSize: [50,50],
+        iconSize: [30,30],
         popupAnchor: [0,0],
       });
-      var customPopup ="UNC dome<br/><img src='https://2.bp.blogspot.com/-oxlumiwWxXw/VoHHxqaIq6I/AAAAAAAAEJU/rz0iP-WoiE8/s1600/Dean%2BDome%2BChapel%2BHill.jpg'width='100px'/>"; 
+      var customPopup ="This is where I watched my first UNC basketball game <br/><img src='https://2.bp.blogspot.com/-oxlumiwWxXw/VoHHxqaIq6I/AAAAAAAAEJU/rz0iP-WoiE8/s1600/Dean%2BDome%2BChapel%2BHill.jpg'width='200px'/>"; 
 
       L.geoJSON(uncdome, {
       pointToLayer: function (feature, latlng) {
@@ -65,11 +87,15 @@
         "Unc photo":topoPhoto
       }
 
-      var vector = {
+      var vectors = {
        "Dean Dome":marker,
+       "Skipper Bowls Drive": polyline,
+       "Davis Library": polygon,
+       "Kenan Stadium": stadium,
+       "UNC Hospital": hospital
       }
 
-      L.control.layers(tiles, vector).addTo(map);
+      L.control.layers(tiles, vectors).addTo(map);
 
 
      
